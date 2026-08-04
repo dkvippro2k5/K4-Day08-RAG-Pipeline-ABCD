@@ -78,7 +78,8 @@ async def crawl_all():
         # Lưu file JSON
         filename = f"article_{i:02d}.json"
         filepath = DATA_DIR / filename
-        filepath.write_text(json.dumps(article, ensure_ascii=False, indent=2))
+        filepath.write_text(json.dumps(article, ensure_ascii=False, indent=2), encoding="utf-8")
+
         print(f"  ✓ Saved: {filepath}")
 
 
