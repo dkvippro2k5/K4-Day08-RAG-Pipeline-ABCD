@@ -8,6 +8,8 @@ Chạy:
 
 import os
 import sys
+import time
+import uuid
 from pathlib import Path
 
 import streamlit as st
@@ -24,8 +26,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 # =============================================================================
 
 st.set_page_config(
-    page_title="E-commerce Support RAG Chatbot",
-    page_icon="🛒",
+    page_title="Shopee Trợ Giúp — RAG Chatbot",
+    page_icon="🛍️",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -35,7 +37,7 @@ st.set_page_config(
 # =============================================================================
 
 with st.sidebar:
-    st.title("🛒 E-commerce Support RAG")
+    st.title("🛍️ Shopee Trợ Giúp")
     st.caption("Trợ lý hỏi đáp về chính sách thương mại điện tử và hỗ trợ khách hàng (đổi trả, thanh toán, bảo mật, người bán)")
 
     st.divider()
@@ -55,6 +57,42 @@ with st.sidebar:
     st.divider()
     st.subheader("⚙️ Thiết lập")
     top_k = st.slider("Số chunks retrieval (top_k)", 3, 10, 5)
+
+    st.divider()
+    st.subheader("🔧 Cấu hình pipeline")
+    st.caption("Tham số thật đang dùng trong code — đọc trực tiếp từ src/, không phải giá trị mẫu.")
+
+    try:
+        from src.task4_chunking_indexing import (
+            CHUNK_SIZE, CHUNK_OVERLAP, CHUNKING_METHOD,
+            EMBEDDING_MODEL, EMBEDDING_DIM, VECTOR_STORE,
+        )
+        from src.task9_retrieval_pipeline import SCORE_THRESHOLD, RERANK_METHOD
+        from src.task10_generation import LLM_MODEL, TEMPERATURE, TOP_P
+
+        config_rows = [
+            ("Chunking", CHUNKING_METHOD, "Cách cắt văn bản thành đoạn nhỏ"),
+            ("Chunk size / overlap", f"{CHUNK_SIZE} / {CHUNK_OVERLAP}", "Độ dài mỗi đoạn & phần lặp giữa 2 đoạn"),
+            ("Embedding model", EMBEDDING_MODEL, "Model chuyển văn bản → vector"),
+            ("Embedding dim", str(EMBEDDING_DIM), "Số chiều vector"),
+            ("Vector store", VECTOR_STORE, "Nơi lưu trữ vector"),
+            ("Rerank method", RERANK_METHOD.upper(), "Cách gộp/xếp hạng kết quả"),
+            ("Fallback threshold", str(SCORE_THRESHOLD), "Điểm cosine tối thiểu trước khi fallback PageIndex"),
+            ("LLM model", LLM_MODEL, "Model sinh câu trả lời"),
+            ("Temperature", str(TEMPERATURE), "Độ sáng tạo của câu trả lời (thấp = bám sát nguồn)"),
+            ("Top-p", str(TOP_P), "Nucleus sampling"),
+        ]
+
+        with st.expander("📋 Xem chi tiết cấu hình", expanded=False):
+            for label, value, desc in config_rows:
+                st.markdown(
+                    f'<div class="cfg-row"><span class="cfg-label">{label}</span>'
+                    f'<span class="cfg-value">{value}</span></div>'
+                    f'<div class="cfg-desc">{desc}</div>',
+                    unsafe_allow_html=True,
+                )
+    except Exception as e:
+        st.caption(f"⚠ Không đọc được config: {e}")
 
     st.divider()
     st.caption("**Kiến trúc hệ thống:**")
@@ -77,8 +115,18 @@ load_css()
 # MAIN CHAT AREA
 # =============================================================================
 
-st.title("🛒 E-commerce Support RAG Chatbot")
-st.caption("Hệ thống hỏi đáp chính sách e-commerce và trợ giúp khách hàng")
+st.markdown(
+    '''
+    <div class="shopee-hero">
+      <div class="shopee-hero-icon">🛍️</div>
+      <div>
+        <p class="shopee-hero-title">Shopee Trợ Giúp — Trợ lý AI</p>
+        <p class="shopee-hero-sub">Hỏi đáp chính sách thương mại điện tử &amp; hỗ trợ khách hàng, có trích dẫn nguồn</p>
+      </div>
+    </div>
+    ''',
+    unsafe_allow_html=True,
+)
 
 # Render active trace drawer if any
 # We do this at the top level so it acts as an overlay
@@ -116,9 +164,7 @@ user_input = st.chat_input("Nhập câu hỏi của bạn về chính sách/hỗ
 query = user_input or st.session_state.pending_query
 
 if query:
-    import time
     st.session_state.pending_query = None
-    import uuid
     msg_id = str(uuid.uuid4())
 
     # Hiển thị câu hỏi của user

@@ -1,34 +1,72 @@
 <style>
   :root{
-    --bg:#F5F6FA;
+    --bg:#F5F5F5;
     --surface:#FFFFFF;
-    --surface-alt:#EEF0F8;
-    --ink:#1E1B2E;
-    --ink-soft:#63607A;
-    --ink-faint:#9A97B0;
-    --brand:#4338CA;
-    --brand-hover:#372DB0;
-    --brand-soft:#EEF0FF;
-    --accent:#F59E0B;
-    --accent-soft:#FFF4DE;
-    --success:#16A34A;
-    --success-soft:#E9F9EF;
-    --border:#E3E4EE;
-    --mono-bg:#17152E;
-    --mono-text:#C9C4F5;
-    --mono-key:#8B84E8;
-    --mono-str:#F5B971;
-    --radius-lg:18px;
-    --radius-md:12px;
-    --radius-sm:8px;
-    --shadow: 0 1px 2px rgba(30,27,46,0.04), 0 8px 24px -12px rgba(30,27,46,0.12);
+    --surface-alt:#FFF3F0;
+    --ink:#222222;
+    --ink-soft:#555555;
+    --ink-faint:#9E9E9E;
+    --brand:#EE4D2D;
+    --brand-hover:#D8431F;
+    --brand-soft:#FFEEE8;
+    --accent:#F53D2D;
+    --accent-soft:#FFF0EE;
+    --success:#26AA99;
+    --success-soft:#E6F7F5;
+    --border:#F0F0F0;
+    --mono-bg:#2B2118;
+    --mono-text:#F5D9C9;
+    --mono-key:#F5B971;
+    --mono-str:#FFA07A;
+    --radius-lg:16px;
+    --radius-md:10px;
+    --radius-sm:6px;
+    --shadow: 0 1px 2px rgba(238,77,45,0.04), 0 6px 20px -10px rgba(238,77,45,0.18);
   }
 
   /* Custom App Overrides for Streamlit */
   .stApp {
     background-color: var(--bg);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nới cỡ chữ mặc định của Streamlit (markdown, label, caption...) cho dễ đọc hơn */
+  .stApp p, .stApp li, .stApp label, .stMarkdown {
+    font-size: 15.5px !important;
+    line-height: 1.65 !important;
+  }
+  .stApp .stCaption, .stApp small {
+    font-size: 13px !important;
+    color: var(--ink-soft) !important;
+  }
+  .stApp h1 { font-size: 24px !important; font-weight: 700 !important; }
+  .stApp h2 { font-size: 19px !important; font-weight: 700 !important; }
+  .stApp h3, .stApp .stSubheader { font-size: 16.5px !important; font-weight: 700 !important; }
+
+  /* Config panel (sidebar) */
+  .cfg-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 8px; margin-top: 10px;
+  }
+  .cfg-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .cfg-value {
+    font-size: 12.5px; font-weight: 600; color: var(--brand);
+    background: var(--brand-soft); padding: 2px 8px; border-radius: 6px;
+    max-width: 62%; overflow-wrap: break-word; text-align: right;
+  }
+  .cfg-desc { font-size: 11.5px; color: var(--ink-faint); margin-top: 1px; margin-bottom: 4px; }
+
+  /* Streamlit sidebar → Shopee cam header look */
+  section[data-testid="stSidebar"] {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+  }
+  section[data-testid="stSidebar"] > div {
+    padding-top: 0;
   }
 
   /* Messages */
@@ -65,22 +103,22 @@
   .bot-text p { margin: 0 0 10px; }
   .bot-text p:last-child { margin-bottom: 0; }
   .bot-heading {
-    font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 15px;
     margin: 14px 0 10px;
     display: flex; align-items: center; gap: 7px;
   }
 
-  /* Pipeline (Breadcrumbs) */
+  /* Pipeline (Breadcrumbs) — làm mềm, nhỏ gọn hơn, không nổi bật quá mức */
   .pipeline {
     display: flex; align-items: center; gap: 6px;
     margin-bottom: 14px; padding-bottom: 14px;
     border-bottom: 1px dashed var(--border);
+    opacity: 0.75;
   }
   .pipeline-step {
     display: flex; align-items: center; gap: 5px;
-    font-size: 11px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
     color: var(--ink-faint);
   }
   .pipeline-step.done { color: var(--success); }
@@ -103,7 +141,7 @@
   }
   table.compare thead th {
     text-align: left; background: var(--surface-alt);
-    color: var(--ink-soft); font-weight: 600; font-size: 11.5px;
+    color: var(--brand); font-weight: 600; font-size: 11.5px;
     text-transform: uppercase; letter-spacing: .03em;
     padding: 10px 14px; border-bottom: 1px solid var(--border);
   }
@@ -117,7 +155,7 @@
   .spec-val { font-weight: 600; color: var(--brand); }
   .highlight-badge {
     display: inline-block; margin-top: 4px; font-size: 10.5px; font-weight: 600;
-    color: var(--accent); background: var(--accent-soft);
+    color: var(--brand); background: var(--brand-soft);
     padding: 2px 7px; border-radius: 999px;
   }
 
@@ -131,8 +169,52 @@
   }
   .meta-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
   .chip-confidence { background: var(--success-soft); color: var(--success); }
-  .chip-source { background: var(--surface-alt); color: var(--ink-soft); cursor: default; }
+  .chip-source { background: var(--surface-alt); color: var(--brand); cursor: default; }
   .chip-time { color: var(--ink-faint); font-size: 11.5px; padding: 6px 4px; }
+
+  /* Suggested question chips trong sidebar — bo tròn giống Shopee search suggestions */
+  section[data-testid="stSidebar"] div[data-testid="stButton"] button {
+    background: var(--surface-alt);
+    color: var(--brand);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    padding: 8px 14px;
+    transition: .15s ease;
+  }
+  section[data-testid="stSidebar"] div[data-testid="stButton"] button:hover {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+  }
+
+  /* Primary CTA-style buttons ngoài sidebar (fallback mặc định Streamlit) */
+  div[data-testid="stButton"] button[kind="primary"] {
+    background: var(--brand);
+    border-color: var(--brand);
+  }
+  div[data-testid="stButton"] button[kind="primary"]:hover {
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
+  }
+
+  /* Slider handle/track theo tone cam Shopee */
+  div[data-testid="stSlider"] div[role="slider"] {
+    background-color: var(--brand) !important;
+    border-color: var(--brand) !important;
+  }
+  div[data-testid="stSlider"] .st-emotion-cache-1dj0hjr,
+  div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div {
+    background: var(--brand) !important;
+  }
+
+  /* Chat input focus ring theo tone cam */
+  div[data-testid="stChatInput"] textarea:focus {
+    border-color: var(--brand) !important;
+    box-shadow: 0 0 0 1px var(--brand) !important;
+  }
 
   /* OVERRIDES FOR STREAMLIT BUTTONS via :has() markers */
 
@@ -169,9 +251,8 @@
     padding: 0;
   }
   div[data-testid="stHorizontalBlock"]:has(#marker-feedback) div[data-testid="stButton"] button:hover {
-    background: var(--surface-alt); color: var(--ink-soft);
+    background: var(--surface-alt); color: var(--brand);
   }
-  /* For active states, we can render a different marker or use Streamlit's primary button style */
   div[data-testid="stHorizontalBlock"]:has(#marker-feedback-up) div[data-testid="stButton"] button {
     color: var(--success); background: var(--success-soft);
   }
@@ -181,32 +262,63 @@
 
   /* Drawer Overlay */
   .overlay {
-    position: fixed; inset: 0; background: rgba(23,21,46,0.35);
+    position: fixed; inset: 0; background: rgba(34,34,34,0.35);
     z-index: 999990;
   }
   .drawer {
     position: fixed; top: 0; right: 0; height: 100%; width: 380px; max-width: 92vw;
-    background: var(--surface); box-shadow: -16px 0 40px -20px rgba(23,21,46,0.4);
+    background: var(--surface); box-shadow: -16px 0 40px -20px rgba(34,34,34,0.4);
     z-index: 999991; display: flex; flex-direction: column; padding: 22px 20px; overflow-y: auto;
   }
   .drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
-  .drawer-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; }
+  .drawer-title { font-weight: 600; font-size: 15px; color: var(--brand); }
   .drawer-sub { font-size: 12px; color: var(--ink-faint); margin-bottom: 20px; }
-  
+
   .step-card { border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
   .step-head { display: flex; align-items: center; gap: 9px; padding: 12px 14px; background: var(--surface-alt); }
-  .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--success); color: #fff; font-size: 10.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 10.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .step-title { font-size: 12.5px; font-weight: 600; }
-  .step-time { margin-left: auto; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: var(--ink-faint); }
+  .step-time { margin-left: auto; font-size: 10.5px; color: var(--ink-faint); }
   .step-body { padding: 12px 14px; font-size: 12px; color: var(--ink-soft); }
   .step-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-  .tag { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); font-family: 'JetBrains Mono', monospace; }
-  
+  .tag { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); }
+
   /* Close Button Override */
   div[data-testid="stHorizontalBlock"]:has(#marker-drawer-close) div[data-testid="stButton"] button {
     width: 28px; height: 28px; border-radius: 8px; border: none;
-    background: var(--surface-alt); color: var(--ink-soft);
+    background: var(--surface-alt); color: var(--brand);
     position: fixed; right: 20px; top: 22px; z-index: 999992;
     padding: 0; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ---- Shopee-style hero header (brand banner) ---- */
+  .shopee-hero {
+    background: linear-gradient(135deg, var(--brand), #F53D2D);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow);
+  }
+  .shopee-hero-icon {
+    width: 44px; height: 44px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .shopee-hero-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 2px;
+  }
+  .shopee-hero-sub {
+    color: rgba(255,255,255,0.9);
+    font-size: 12.5px;
+    margin: 0;
   }
 </style>
