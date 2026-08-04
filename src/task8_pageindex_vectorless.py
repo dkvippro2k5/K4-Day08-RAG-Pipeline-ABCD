@@ -79,7 +79,7 @@ def _set_pdf_font(pdf, content: str) -> str:
             pdf.set_font("sysfont", size=12)
             return content
         except (OSError, RuntimeError, TypeError, ValueError) as exc:
-            print(f"  ⚠ Không dùng được font Unicode {font_path}: {exc}")
+            print(f"  [WARN] Không dùng được font Unicode {font_path}: {exc}")
 
     # Built-in fonts của PDF chỉ hỗ trợ Latin-1. Vẫn tạo được PDF để pipeline
     # không bị crash nếu máy không có font TTF phù hợp, nhưng ký tự ngoài
@@ -121,10 +121,10 @@ def upload_documents():
         try:
             resp = client.submit_document(str(pdf_path))
             doc_id = resp.get("doc_id") or resp.get("id")
-            print(f"  ✓ Uploaded: {md_file.name} -> {doc_id}")
+            print(f"  [OK] Uploaded: {md_file.name} -> {doc_id}")
             doc_mapping[md_file.name] = doc_id
         except Exception as e:
-            print(f"  ❌ Upload failed for {md_file.name}: {e}")
+            print(f"  [ERROR] Upload failed for {md_file.name}: {e}")
             
     # Lưu mapping
     mapping_path = Path(__file__).parent.parent / "pageindex_doc_ids.json"
@@ -148,7 +148,7 @@ def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
     mapping_path = Path(__file__).parent.parent / "pageindex_doc_ids.json"
     
     if not mapping_path.exists():
-        print("⚠ Không tìm thấy pageindex_doc_ids.json. Vui lòng chạy upload_documents() trước.")
+        print("[WARN] Không tìm thấy pageindex_doc_ids.json. Vui lòng chạy upload_documents() trước.")
         return []
         
     doc_mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
@@ -191,7 +191,7 @@ def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
 
 if __name__ == "__main__":
     if not PAGEINDEX_API_KEY:
-        print("⚠ Hãy set PAGEINDEX_API_KEY trong file .env")
+        print("[WARN] Hãy set PAGEINDEX_API_KEY trong file .env")
         print("  Đăng ký tại: https://pageindex.ai/")
     else:
         print("Uploading documents...")
