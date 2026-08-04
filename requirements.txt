@@ -5,6 +5,8 @@ numpy>=1.24.0
 
 # Task 2 - Crawling
 crawl4ai>=0.3.0
+# Compatible with ragas 0.1.21 / langchain-openai 0.1.x (OpenAI SDK < 2)
+litellm==1.79.3
 
 # Task 3 - Document conversion
 markitdown[pdf]>=0.1.0

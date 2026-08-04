@@ -115,7 +115,7 @@ Sử dụng [MarkItDown](https://github.com/microsoft/markitdown) của Microsof
 
 **Cài đặt:**
 ```bash
-pip install markitdown
+pip install "markitdown[pdf]"
 ```
 
 **Code mẫu:**
@@ -139,6 +139,23 @@ PDF — nếu chỉ `pip install markitdown` sẽ báo lỗi `MissingDependencyE
 - Output lưu vào `data/standardized/`
 - Giữ nguyên cấu trúc thư mục con (`legal/`, `news/`)
 - Mỗi file output có tên tương ứng: `returns-refund-policy-shopee.md`
+
+**Cách chạy:**
+```bash
+python -m src.task3_convert_markdown
+```
+
+Script quét đệ quy các file PDF/DOC/DOCX/HTML/JSON/TXT/Markdown, bỏ qua các file
+đánh dấu như `.gitkeep`, và có thể chạy lại an toàn vì output được ghi đè theo đúng
+đường dẫn tương ứng. Với JSON bài crawl có các trường `title`, `url`,
+`date_crawled`, `content_markdown`, metadata nguồn sẽ được thêm vào đầu file Markdown
+để các task retrieval sau có thể truy vết citation.
+
+Ví dụ ánh xạ đường dẫn:
+```
+data/landing/legal/policy.pdf  → data/standardized/legal/policy.md
+data/landing/news/article.json → data/standardized/news/article.md
+```
 
 ---
 
