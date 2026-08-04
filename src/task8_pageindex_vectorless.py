@@ -114,7 +114,7 @@ def upload_documents():
         pdf = FPDF()
         pdf.add_page()
         content = _set_pdf_font(pdf, content)
-        pdf.multi_cell(0, 7, txt=content)
+        pdf.multi_cell(0, 7, text=content)
         pdf.output(str(pdf_path))
 
         print(f"Uploading {pdf_path.name}...")
@@ -128,7 +128,10 @@ def upload_documents():
             
     # Lưu mapping
     mapping_path = Path(__file__).parent.parent / "pageindex_doc_ids.json"
-    mapping_path.write_text(json.dumps(doc_mapping, ensure_ascii=False, indent=2))
+    mapping_path.write_text(
+        json.dumps(doc_mapping, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     print(f"\nĐã lưu danh sách doc_id vào {mapping_path.name}")
 
 
@@ -148,7 +151,7 @@ def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
         print("⚠ Không tìm thấy pageindex_doc_ids.json. Vui lòng chạy upload_documents() trước.")
         return []
         
-    doc_mapping = json.loads(mapping_path.read_text())
+    doc_mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
     doc_ids = list(doc_mapping.values())
     if not doc_ids:
         return []
