@@ -115,7 +115,9 @@ def format_context(chunks: list[dict]) -> str:
 # GENERATION
 # =============================================================================
 
-def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
+def generate_with_citation(
+    query: str, top_k: int = TOP_K, use_reranking: bool = True
+) -> dict:
     """
     End-to-end RAG generation có citation.
 
@@ -129,6 +131,11 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
 
     Args:
         query: Câu hỏi của user
+        top_k: Số chunks lấy từ retrieval
+        use_reranking: Truyền thẳng xuống retrieve() (Task 9) — cho phép
+            group_project/evaluation/eval_pipeline.py so sánh A/B config
+            hybrid+rerank vs hybrid không rerank mà không cần đụng vào
+            retrieve() trực tiếp.
 
     Returns:
         {
@@ -138,7 +145,7 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
         }
     """
     # Step 1: Retrieve
-    chunks = retrieve(query, top_k=top_k)
+    chunks = retrieve(query, top_k=top_k, use_reranking=use_reranking)
 
     if not chunks:
         return {
