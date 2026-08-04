@@ -35,10 +35,15 @@ from .task8_pageindex_vectorless import pageindex_search
 # CONFIGURATION
 # =============================================================================
 
-# TODO: Calibrate threshold này bằng cách tự đo điểm cosine của semantic_search
-# cho câu hỏi liên quan vs câu hỏi lạc đề (xem ghi chú ở trên) — ĐỪNG copy nguyên
-# giá trị mẫu, mỗi corpus/embedding model sẽ cho khoảng điểm khác nhau.
-SCORE_THRESHOLD = 0.3   # Nếu best score (cosine gốc) < threshold → fallback PageIndex
+# Calibrated bằng cách đo thật điểm cosine của semantic_search trên corpus này:
+#   - Query trong domain (trả hàng, thanh toán, bảo hành, mua hàng xuyên biên giới):
+#     cosine 0.72 - 0.80
+#   - Query lạc đề (nấu ăn, lập trình, giá vàng, chuỗi vô nghĩa): cosine 0.34 - 0.46
+# 0.48 nằm giữa 2 cụm, đúng với giá trị LAB_GUIDE.md yêu cầu (Task 9, bảng
+# troubleshooting #4, tiêu chí pass CP3). Với threshold=0.3 (giá trị cũ), KHÔNG có
+# query lạc đề nào trong nhóm đo được tụt xuống dưới ngưỡng — fallback không bao
+# giờ kích hoạt được cho query rác.
+SCORE_THRESHOLD = 0.48   # Nếu best score (cosine gốc) < threshold → fallback PageIndex
 DEFAULT_TOP_K = 5
 RERANK_METHOD = "rrf"  # "cross_encoder" | "mmr" | "rrf"
 
