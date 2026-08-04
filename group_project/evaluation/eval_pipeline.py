@@ -308,7 +308,8 @@ def export_results(comparison: dict):
     lines.append("| # | Question | Faithfulness | Relevance | Recall | Precision | Failure Stage | Root Cause |")
     lines.append("|---|---|---|---|---|---|---|---|")
     for i, (_, row) in enumerate(worst.iterrows(), 1):
-        q = row["question"][:70].replace("|", "/")
+        q_text = row.get("question") or row.get("user_input") or row.get("query") or "Unknown"
+        q = str(q_text)[:70].replace("|", "/")
         lines.append(
             f"| {i} | {q} | {row['faithfulness']:.2f} | {row['answer_relevancy']:.2f} "
             f"| {row['context_recall']:.2f} | {row['context_precision']:.2f} | | |"
