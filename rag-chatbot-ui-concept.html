@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG Assistant — UI Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6FA;
+    --surface:#FFFFFF;
+    --surface-alt:#EEF0F8;
+    --ink:#1E1B2E;
+    --ink-soft:#63607A;
+    --ink-faint:#9A97B0;
+    --brand:#4338CA;
+    --brand-hover:#372DB0;
+    --brand-soft:#EEF0FF;
+    --accent:#F59E0B;
+    --accent-soft:#FFF4DE;
+    --success:#16A34A;
+    --success-soft:#E9F9EF;
+    --border:#E3E4EE;
+    --mono-bg:#17152E;
+    --mono-text:#C9C4F5;
+    --mono-key:#8B84E8;
+    --mono-str:#F5B971;
+    --radius-lg:18px;
+    --radius-md:12px;
+    --radius-sm:8px;
+    --shadow: 0 1px 2px rgba(30,27,46,0.04), 0 8px 24px -12px rgba(30,27,46,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    padding:28px 16px;
+  }
+
+  .app{
+    width:100%;
+    max-width:760px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  /* ---------- Header ---------- */
+  .header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:4px 4px 4px 6px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-mark{
+    width:36px;height:36px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--brand),#6D5DF0);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow);
+    flex-shrink:0;
+  }
+  .brand-mark svg{width:18px;height:18px;}
+  .brand-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    line-height:1.1;
+  }
+  .brand-sub{
+    font-size:11.5px;
+    color:var(--ink-faint);
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:2px;
+  }
+  .dot-live{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--success);
+    display:inline-block;
+  }
+
+  .trace-toggle{
+    display:flex;align-items:center;gap:6px;
+    padding:8px 12px;
+    border-radius:999px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:.15s ease;
+  }
+  .trace-toggle:hover{border-color:var(--brand); color:var(--brand); background:var(--brand-soft);}
+  .trace-toggle svg{width:14px;height:14px;}
+
+  /* ---------- Chat shell ---------- */
+  .messages{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .msg-user{
+    align-self:flex-end;
+    max-width:78%;
+    background:var(--brand);
+    color:#fff;
+    padding:11px 16px;
+    border-radius:16px 16px 4px 16px;
+    font-size:14.5px;
+    line-height:1.5;
+    box-shadow:var(--shadow);
+  }
+
+  .msg-bot{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:4px 16px 16px 16px;
+    padding:18px 20px 16px;
+    box-shadow:var(--shadow);
+    max-width:100%;
+  }
+
+  /* pipeline breadcrumb — real sequence, so numbering/order is meaningful */
+  .pipeline{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:1px dashed var(--border);
+  }
+  .pipeline-step{
+    display:flex;align-items:center;gap:5px;
+    font-size:11px;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--ink-faint);
+  }
+  .pipeline-step.done{color:var(--success);}
+  .pipeline-step .pip-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--border);
+  }
+  .pipeline-step.done .pip-dot{background:var(--success);}
+  .pipeline-line{
+    flex:1;
+    height:1px;
+    background:var(--border);
+    min-width:10px;
+    max-width:24px;
+  }
+
+  .bot-text{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .bot-text p{margin:0 0 10px;}
+  .bot-text p:last-child{margin-bottom:0;}
+  .bot-heading{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin:14px 0 10px;
+    display:flex;align-items:center;gap:7px;
+  }
+
+  /* ---------- Comparison table ---------- */
+  .compare-wrap{
+    overflow-x:auto;
+    margin:12px 0 4px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+  }
+  table.compare{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    min-width:520px;
+  }
+  table.compare thead th{
+    text-align:left;
+    background:var(--surface-alt);
+    color:var(--ink-soft);
+    font-weight:600;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    padding:10px 14px;
+    border-bottom:1px solid var(--border);
+  }
+  table.compare tbody td{
+    padding:11px 14px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  table.compare tbody tr:last-child td{border-bottom:none;}
+  table.compare tbody tr:hover{background:var(--brand-soft);}
+  .model-name{font-weight:600; color:var(--ink);}
+  .spec-val{font-weight:600; color:var(--brand);}
+  .highlight-badge{
+    display:inline-block;
+    margin-top:4px;
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:2px 7px;
+    border-radius:999px;
+  }
+
+  /* ---------- Meta row: confidence + source ---------- */
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .meta-chip{
+    display:flex;align-items:center;gap:6px;
+    font-size:12px;
+    font-weight:500;
+    padding:6px 11px;
+    border-radius:999px;
+  }
+  .meta-chip svg{width:13px;height:13px;flex-shrink:0;}
+  .chip-confidence{background:var(--success-soft); color:var(--success);}
+  .chip-source{background:var(--surface-alt); color:var(--ink-soft); cursor:pointer;}
+  .chip-source:hover{background:var(--border);}
+  .chip-time{color:var(--ink-faint); font-size:11.5px; padding:6px 4px;}
+
+  /* ---------- Follow-ups ---------- */
+  .followups{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .followup-chip{
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--brand);
+    background:var(--brand-soft);
+    border:1px solid transparent;
+    padding:7px 13px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.15s ease;
+  }
+  .followup-chip:hover{background:var(--surface); border-color:var(--brand);}
+
+  /* ---------- Feedback ---------- */
+  .feedback-row{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:4px;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid var(--border);
+  }
+  .fb-btn{
+    width:28px;height:28px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background:transparent;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    color:var(--ink-faint);
+    transition:.15s ease;
+  }
+  .fb-btn:hover{background:var(--surface-alt); color:var(--ink-soft);}
+  .fb-btn.active-up{color:var(--success); background:var(--success-soft);}
+  .fb-btn.active-down{color:#DC2626; background:#FDECEC;}
+  .fb-btn svg{width:15px;height:15px;}
+
+  /* ---------- Composer ---------- */
+  .composer{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:6px 6px 6px 18px;
+    box-shadow:var(--shadow);
+  }
+  .composer input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    background:transparent;
+    color:var(--ink);
+  }
+  .composer input::placeholder{color:var(--ink-faint);}
+  .send-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    border:none;
+    background:var(--brand);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    transition:.15s ease;
+  }
+  .send-btn:hover{background:var(--brand-hover);}
+  .send-btn svg{width:16px;height:16px;}
+
+  /* ---------- Drawer (system trace) ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(23,21,46,0.35);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:40;
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+
+  .drawer{
+    position:fixed;
+    top:0; right:0;
+    height:100%;
+    width:380px;
+    max-width:92vw;
+    background:var(--surface);
+    box-shadow:-16px 0 40px -20px rgba(23,21,46,0.4);
+    transform:translateX(100%);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    z-index:41;
+    display:flex;
+    flex-direction:column;
+    padding:22px 20px;
+    overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:4px;
+  }
+  .drawer-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:15px;
+  }
+  .drawer-close{
+    width:28px;height:28px;
+    border-radius:8px;
+    border:none;
+    background:var(--surface-alt);
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+  }
+  .drawer-sub{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:20px;
+  }
+
+  .step-card{
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .step-head{
+    display:flex;align-items:center;gap:9px;
+    padding:12px 14px;
+    background:var(--surface-alt);
+  }
+  .step-num{
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--success);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .step-title{font-size:12.5px; font-weight:600;}
+  .step-time{
+    margin-left:auto;
+    font-size:10.5px;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--ink-faint);
+  }
+  .step-body{padding:12px 14px; font-size:12px; color:var(--ink-soft);}
+  .step-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;}
+  .tag{
+    font-size:10.5px; font-weight:600;
+    padding:3px 8px; border-radius:6px;
+    background:var(--brand-soft); color:var(--brand);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .code-toggle{
+    font-size:11px; font-weight:600; color:var(--brand);
+    cursor:pointer; user-select:none;
+    display:flex; align-items:center; gap:4px;
+    margin-top:6px;
+  }
+  pre.code{
+    background:var(--mono-bg);
+    color:var(--mono-text);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    line-height:1.6;
+    padding:12px;
+    border-radius:var(--radius-sm);
+    margin-top:8px;
+    overflow-x:auto;
+    display:none;
+  }
+  pre.code.open{display:block;}
+  .kw{color:var(--mono-key);}
+  .str{color:var(--mono-str);}
+
+  .drawer-footer{
+    margin-top:auto;
+    padding-top:16px;
+    font-size:11px;
+    color:var(--ink-faint);
+    text-align:center;
+  }
+
+  @media (max-width:600px){
+    body{padding:14px 10px;}
+    table.compare{min-width:480px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#fff"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">Trợ lý mua sắm</div>
+        <div class="brand-sub"><span class="dot-live"></span>Đang hoạt động</div>
+      </div>
+    </div>
+    <button class="trace-toggle" id="traceToggle" onclick="openDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      Xem quy trình xử lý
+    </button>
+  </div>
+
+  <div class="messages">
+
+    <div class="msg-user">so sánh khả năng chụp ảnh của 4 chiếc điện thoại đó</div>
+
+    <div class="msg-bot">
+
+      <div class="pipeline">
+        <div class="pipeline-step done"><span class="pip-dot"></span>Hiểu yêu cầu</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-step done"><span class="pip-dot"></span>Truy xuất dữ liệu</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-step done"><span class="pip-dot"></span>Tổng hợp câu trả lời</div>
+      </div>
+
+      <div class="bot-text">
+        <p>Mình đã so sánh camera của 4 mẫu Xiaomi dựa trên thông số kỹ thuật trong cơ sở dữ liệu sản phẩm. Camera sau càng nhiều MP thường chụp chi tiết hơn ở điều kiện đủ sáng; camera trước ảnh hưởng đến chất lượng ảnh selfie.</p>
+
+        <div class="bot-heading">📷 Bảng so sánh camera</div>
+
+        <div class="compare-wrap">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Mẫu máy</th>
+                <th>Camera sau</th>
+                <th>Camera trước</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="model-name">Redmi Note 10</td>
+                <td class="spec-val">48 MP</td>
+                <td class="spec-val">13 MP</td>
+                <td>Cân bằng, phù hợp phổ thông</td>
+              </tr>
+              <tr>
+                <td class="model-name">Redmi Note 12 (5G)</td>
+                <td class="spec-val">48 MP</td>
+                <td class="spec-val">16 MP</td>
+                <td>Selfie tốt hơn Note 10<br><span class="highlight-badge">Selfie sắc nét</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">Mi 11X (5G)</td>
+                <td class="spec-val">48 MP</td>
+                <td class="spec-val">20 MP</td>
+                <td>Camera trước cao nhất nhóm<br><span class="highlight-badge">Selfie tốt nhất</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">Redmi 13C</td>
+                <td class="spec-val">50 MP</td>
+                <td class="spec-val">8 MP</td>
+                <td>Camera sau cao nhất nhóm<br><span class="highlight-badge">Chụp sau tốt nhất</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:12px; color:var(--ink-soft); font-size:13.5px;">Lưu ý: MP cao không đồng nghĩa ảnh đẹp hơn — cảm biến, khẩu độ và xử lý ảnh (ISP) cũng ảnh hưởng nhiều. Dữ liệu hiện tại của mình chỉ gồm thông số MP, chưa có đánh giá thực tế chụp thử.</p>
+      </div>
+
+      <div class="meta-row">
+        <div class="meta-chip chip-confidence">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          Độ khớp dữ liệu: Cao (4/4 sản phẩm)
+        </div>
+        <div class="meta-chip chip-source" onclick="openDrawer()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+          Nguồn: CSDL sản phẩm Neo4j
+        </div>
+        <div class="meta-chip chip-time">Phản hồi trong 2.4s</div>
+      </div>
+
+      <div class="followups">
+        <div class="followup-chip" onclick="fillInput(this)">So sánh giá 4 máy này?</div>
+        <div class="followup-chip" onclick="fillInput(this)">Máy nào pin trâu nhất?</div>
+        <div class="followup-chip" onclick="fillInput(this)">Máy nào chụp đêm tốt nhất?</div>
+      </div>
+
+      <div class="feedback-row">
+        <button class="fb-btn" onclick="toggleFb(this,'up')" title="Câu trả lời hữu ích">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11v10H4a1 1 0 01-1-1v-8a1 1 0 011-1h3zm0 0l4-8a2 2 0 013 2v5h5.5a2 2 0 012 2.3l-1.2 7A2 2 0 0118.3 21H7"/></svg>
+        </button>
+        <button class="fb-btn" onclick="toggleFb(this,'down')" title="Câu trả lời chưa đúng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 13V3h3a1 1 0 011 1v8a1 1 0 01-1 1h-3zm0 0l-4 8a2 2 0 01-3-2v-5H4.5a2 2 0 01-2-2.3l1.2-7A2 2 0 015.7 3H17"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="composer">
+    <input id="composerInput" type="text" placeholder="Tìm sản phẩm, so sánh cấu hình...">
+    <button class="send-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-title">Quy trình xử lý</div>
+    <button class="drawer-close" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="drawer-sub">Chi tiết 3 bước tạo ra câu trả lời trên — dành cho ai muốn kiểm tra căn cứ.</div>
+
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">Phân tích ý định</div>
+      <div class="step-time">180ms</div>
+    </div>
+    <div class="step-body">
+      <div class="step-tags">
+        <span class="tag">brand: xiaomi</span>
+        <span class="tag">os: android</span>
+        <span class="tag">cat: phone</span>
+        <span class="tag">intent: so_sanh_camera</span>
+      </div>
+      Nhận diện được 4 sản phẩm nhắc đến trước đó trong hội thoại và trọng tâm so sánh là camera.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-title">Truy xuất dữ liệu</div>
+      <div class="step-time">1.9s</div>
+    </div>
+    <div class="step-body">
+      Truy vấn đồ thị Neo4j để lấy thông số camera của 4 sản phẩm cùng danh mục và hệ điều hành.
+      <div class="code-toggle" onclick="toggleCode(this)">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        Xem câu truy vấn Cypher
+      </div>
+      <pre class="code"><span class="kw">MATCH</span> (p:Product)-[:BELONGS_TO]->(b:Brand),
+      (p)-[:RUNS_ON]->(os:OS),
+      (p)-[:IS_CATEGORY]->(c:Category)
+<span class="kw">WHERE</span> toLower(b.name) = <span class="str">$brand</span>
+<span class="kw">RETURN</span> p.id, p.name, p.camera_specs
+<span class="kw">LIMIT</span> 4</pre>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">Tổng hợp câu trả lời</div>
+      <div class="step-time">320ms</div>
+    </div>
+    <div class="step-body">
+      4/4 sản phẩm có đầy đủ thông số camera → độ khớp dữ liệu cao. Kết quả được xếp vào bảng so sánh và kèm ghi chú giới hạn (chỉ có thông số MP, chưa có đánh giá thực chụp).
+    </div>
+  </div>
+
+  <div class="drawer-footer">Bảng chi tiết này ẩn mặc định để hội thoại chính gọn gàng hơn cho người dùng phổ thông.</div>
+</div>
+
+<script>
+  function openDrawer(){
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+  }
+  function closeDrawer(){
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+  function toggleCode(el){
+    const pre = el.nextElementSibling;
+    pre.classList.toggle('open');
+  }
+  function fillInput(el){
+    document.getElementById('composerInput').value = el.textContent;
+    document.getElementById('composerInput').focus();
+  }
+  function toggleFb(btn, type){
+    const up = document.querySelector('.fb-btn[title="Câu trả lời hữu ích"]');
+    const down = document.querySelector('.fb-btn[title="Câu trả lời chưa đúng"]');
+    if(type==='up'){
+      btn.classList.toggle('active-up');
+      down.classList.remove('active-down');
+    } else {
+      btn.classList.toggle('active-down');
+      up.classList.remove('active-up');
+    }
+  }
+</script>
+
+</body>
+</html>

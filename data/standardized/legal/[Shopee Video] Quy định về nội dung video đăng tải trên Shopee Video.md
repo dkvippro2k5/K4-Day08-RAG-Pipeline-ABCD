@@ -55,81 +55,15 @@ Quy định về nội dung video có gắn kèm link sản phẩm
 cho Người xem, Shopee lưu ý Người dùng luôn tuân thủ một số quy định & tiêu chí quan trọng
 khi đăng tải video có kèm link sản phẩm trên Shopee Video, cụ thể như sau:
 
-Yếu tố video
-
-Đối với Video có dùng thử sản
-phẩm
-
-Đối với Video không dùng thử
-sản phẩm
-
-Quy định
-
-Độ an toàn
-
-Video không vi phạm Tiêu chuẩn cộng đồng Shopee Video
-
-Ngôn ngữ
-
-Background
-
-Hình ảnh/ánh sáng
-
-Video phải có âm thanh hoặc phụ đề bằng tiếng Việt hoặc tiếng
-Anh
-
-Video cần đảm bảo sử dụng phông nền, cảnh trí gọn gàng, sạch sẽ
-và làm nổi bật sản phẩm.
-
-Hình ảnh & ánh sáng trong video cần đảm bảo:
-- Đầy đủ ánh sáng và rõ nét, có thể nhìn rõ các đối tượng và hoạt
-động trong video.
-- Không bị rung lắc, mờ nhòe.
-- Không sử dụng quá nhiều hình ảnh tĩnh (sử dụng không quá 20%
-thời lượng video) hoặc trình chiếu (slideshow) hoặc chỉ cắt nội
-dung từ các chương trình truyền hình hoặc phim ảnh và KHÔNG sử
-dụng video quay màn hình.
-
-Âm thanh
-
-Video có âm thanh rõ ràng, dễ nghe, không có tạp âm, không lẫn
-lộn âm thanh này với âm thanh khác (ví dụ: nhạc nền quá to át
-tiếng nhân vật chính/sử dụng 2 nhạc nền lẫn lộn với nhau/…)
-
-Watermark (hình mờ)
-
-Video không chứa logo/watermark, đặc biệt là logo/watermark của
-bên thứ ba hoặc các nền tảng khác ngoài Shopee
-
-Trung tâm trợ giúp Shopee VN
-
-- Sản phẩm thực tế phải được
-xuất hiện trên video và sản phẩm
-là chủ đề chính của video
-- Có dùng thử sản phẩm để trực
-quan hơn cho người xem (ăn thử,
-uống thử, mặc thử,...) hoặc có
-hành động minh họa đặc tính
-sản phẩm (kéo để giới thiệu độ
-co giãn, đổ nước để test độ
-kháng nước,...)
-
-Shopee Policies
-
-- Sản phẩm thực tế phải được
-xuất hiện trên video và sản
-phẩm là chủ đề chính của
-video
-- Có giới thiệu bằng lời nói/văn
-bản về các đặc tính cơ bản
-(công dụng, chức năng, ưu và
-nhược điểm,...) hoặc cách
-dùng của sản phẩm.
-
-Nội dung liên quan đến
-sản phẩm
-
-Ví dụ minh họa
+| Yếu tố video | Đối với Video có dùng thử sản phẩm | Đối với Video không dùng thử sản phẩm |
+|---|---|---|
+| Độ an toàn | Video không vi phạm Tiêu chuẩn cộng đồng Shopee Video | Video không vi phạm Tiêu chuẩn cộng đồng Shopee Video |
+| Ngôn ngữ | Video phải có âm thanh hoặc phụ đề bằng tiếng Việt hoặc tiếng Anh | Video phải có âm thanh hoặc phụ đề bằng tiếng Việt hoặc tiếng Anh |
+| Background | Video cần đảm bảo sử dụng phông nền, cảnh trí gọn gàng, sạch sẽ và làm nổi bật sản phẩm. | Video cần đảm bảo sử dụng phông nền, cảnh trí gọn gàng, sạch sẽ và làm nổi bật sản phẩm. |
+| Hình ảnh/ánh sáng | Hình ảnh & ánh sáng trong video cần đảm bảo:<br>- Đầy đủ ánh sáng và rõ nét, có thể nhìn rõ các đối tượng và hoạt động trong video.<br>- Không bị rung lắc, mờ nhòe.<br>- Không sử dụng quá nhiều hình ảnh tĩnh (sử dụng không quá 20% thời lượng video) hoặc trình chiếu (slideshow) hoặc chỉ cắt nội dung từ các chương trình truyền hình hoặc phim ảnh và KHÔNG sử dụng video quay màn hình. | Hình ảnh & ánh sáng trong video cần đảm bảo:<br>- Đầy đủ ánh sáng và rõ nét, có thể nhìn rõ các đối tượng và hoạt động trong video.<br>- Không bị rung lắc, mờ nhòe.<br>- Không sử dụng quá nhiều hình ảnh tĩnh (sử dụng không quá 20% thời lượng video) hoặc trình chiếu (slideshow) hoặc chỉ cắt nội dung từ các chương trình truyền hình hoặc phim ảnh và KHÔNG sử dụng video quay màn hình. |
+| Âm thanh | Video có âm thanh rõ ràng, dễ nghe, không có tạp âm, không lẫn lộn âm thanh này với âm thanh khác (ví dụ: nhạc nền quá to át tiếng nhân vật chính/sử dụng 2 nhạc nền lẫn lộn với nhau/…) | Video có âm thanh rõ ràng, dễ nghe, không có tạp âm, không lẫn lộn âm thanh này với âm thanh khác (ví dụ: nhạc nền quá to át tiếng nhân vật chính/sử dụng 2 nhạc nền lẫn lộn với nhau/…) |
+| Watermark (hình mờ) | Video không chứa logo/watermark, đặc biệt là logo/watermark của bên thứ ba hoặc các nền tảng khác ngoài Shopee | Video không chứa logo/watermark, đặc biệt là logo/watermark của bên thứ ba hoặc các nền tảng khác ngoài Shopee |
+| Nội dung liên quan đến sản phẩm | - Sản phẩm thực tế phải được xuất hiện trên video và sản phẩm là chủ đề chính của video<br>- Có dùng thử sản phẩm để trực quan hơn cho người xem (ăn thử, uống thử, mặc thử,...) hoặc có hành động minh họa đặc tính sản phẩm (kéo để giới thiệu độ co giãn, đổ nước để test độ kháng nước,...) | - Sản phẩm thực tế phải được xuất hiện trên video và sản phẩm là chủ đề chính của video<br>- Có giới thiệu bằng lời nói/văn bản về các đặc tính cơ bản (công dụng, chức năng, ưu và nhược điểm,...) hoặc cách dùng của sản phẩm. |
 
 Video cần đảm bảo sử dụng phông nền, cảnh trí gọn gàng, sạch sẽ và làm nổi bật sản phẩm.
 
@@ -153,49 +87,11 @@ Quy định về mức độ liên quan giữa nội dung video và sản phẩm
 Sản phẩm đính kèm trong giỏ hàng của video BẮT BUỘC phải liên quan đến sản phẩm được giới
 thiệu/đề cập trong nội dung video. Các mức độ liên quan được quy định cụ thể như sau:
 
-Mức độ
-liên quan
-
-Định nghĩa
-
-Ví dụ minh họa
-
-Sản phẩm được đề
-cập trong video
-
-Sản phẩm đính kèm
-trong giỏ hàng
-
-Trung tâm trợ giúp Shopee VN
-
-Shopee Policies
-
-Liên quan
-
-Sản phẩm được đính kèm
-trong giỏ hàng phải giống
-hoàn toàn sản phẩm được đề
-cập trong nội dung video
-
-Ít liên quan
-
-Sản phẩm được đính kèm
-trong giỏ hàng tương tự sản
-phẩm được đề cập  trong nội
-dung video (cùng loại sản
-phẩm nhưng khác màu
-sắc/họa tiết/v.v)
-
-Không liên
-quan
-(không đạt
-yêu cầu)
-
-Sản phẩm được đính kèm
-trong giỏ hàng hoàn toàn
-không liên quan sản phẩm
-được đề cập  trong nội dung
-video
+| Mức độ liên quan | Định nghĩa |
+|---|---|
+| Liên quan | Sản phẩm được đính kèm trong giỏ hàng phải giống hoàn toàn sản phẩm được đề cập trong nội dung video |
+| Ít liên quan | Sản phẩm được đính kèm trong giỏ hàng tương tự sản phẩm được đề cập trong nội dung video (cùng loại sản phẩm nhưng khác màu sắc/họa tiết/v.v) |
+| Không liên quan (không đạt yêu cầu) | Sản phẩm được đính kèm trong giỏ hàng hoàn toàn không liên quan sản phẩm được đề cập trong nội dung video |
 
 Lưu ý về hành vi vi phạm Tạo giao dịch bên ngoài nền tảng
 Giao dịch ngoài Shopee là tất cả những hành vi điều hướng Người mua ra ngoài sàn thương

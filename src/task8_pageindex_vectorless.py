@@ -23,6 +23,7 @@ có field "deprecation" cảnh báo) và trả kết quả trong "retrieved_node
 """
 
 import os
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -30,6 +31,61 @@ load_dotenv()
 
 PAGEINDEX_API_KEY = os.getenv("PAGEINDEX_API_KEY", "")
 STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
+
+
+def _find_unicode_font() -> Path | None:
+    """Tìm một font TrueType có glyph Unicode trên hệ điều hành hiện tại.
+
+    Task 8 cần chuyển Markdown thành PDF tạm trước khi upload lên PageIndex.
+    Đường dẫn ``/System/Library/...`` chỉ có trên macOS, vì vậy không được
+    hard-code cho Windows. Các font trong danh sách đều là font hệ thống phổ
+    biến và có thể hiển thị tiếng Việt.
+    """
+    if os.name == "nt":
+        windows_dir = Path(os.environ.get("WINDIR", r"C:\Windows"))
+        candidates = [
+            windows_dir / "Fonts" / "arialuni.ttf",
+            windows_dir / "Fonts" / "arial.ttf",
+            windows_dir / "Fonts" / "segoeui.ttf",
+            windows_dir / "Fonts" / "calibri.ttf",
+        ]
+    elif sys.platform == "darwin":
+        candidates = [
+            Path("/System/Library/Fonts/Supplemental/Arial Unicode.ttf"),
+            Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+            Path("/Library/Fonts/Arial.ttf"),
+        ]
+    else:
+        candidates = [
+            Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+            Path("/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"),
+            Path("/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf"),
+        ]
+
+    return next((font for font in candidates if font.is_file()), None)
+
+
+def _set_pdf_font(pdf, content: str) -> str:
+    """Đặt font Unicode cho PDF và trả về content đã fallback nếu cần."""
+    font_path = _find_unicode_font()
+    if font_path:
+        try:
+            # fpdf2 hiện tại tự nhận diện Unicode; nhánh TypeError giữ tương
+            # thích với fpdf2 cũ còn yêu cầu tham số ``uni=True``.
+            try:
+                pdf.add_font("sysfont", fname=str(font_path))
+            except TypeError:
+                pdf.add_font("sysfont", "", str(font_path), uni=True)
+            pdf.set_font("sysfont", size=12)
+            return content
+        except (OSError, RuntimeError, TypeError, ValueError) as exc:
+            print(f"  ⚠ Không dùng được font Unicode {font_path}: {exc}")
+
+    # Built-in fonts của PDF chỉ hỗ trợ Latin-1. Vẫn tạo được PDF để pipeline
+    # không bị crash nếu máy không có font TTF phù hợp, nhưng ký tự ngoài
+    # Latin-1 sẽ bị thay bằng '?'.
+    pdf.set_font("helvetica", size=12)
+    return content.encode("latin-1", "replace").decode("latin-1")
 
 
 def upload_documents():
@@ -55,17 +111,10 @@ def upload_documents():
         pdf_path = tmp_pdf_dir / f"{md_file.stem}.pdf"
         
         # Convert Markdown -> PDF đơn giản bằng fpdf2
-        # Sử dụng encoding latin-1 'replace' tạm thời nếu thiếu font unicode
         pdf = FPDF()
         pdf.add_page()
-        pdf.add_font("sysfont", "", "/System/Library/Fonts/Supplemental/Arial Unicode.ttf", uni=True)
-        try:
-            pdf.set_font("sysfont", size=12)
-        except Exception:
-            pdf.set_font("helvetica", size=12) # Fallback
-            content = content.encode('latin-1', 'replace').decode('latin-1')
-
-        pdf.multi_cell(0, 7, txt=content)
+        content = _set_pdf_font(pdf, content)
+        pdf.multi_cell(0, 7, text=content)
         pdf.output(str(pdf_path))
 
         print(f"Uploading {pdf_path.name}...")
@@ -79,7 +128,10 @@ def upload_documents():
             
     # Lưu mapping
     mapping_path = Path(__file__).parent.parent / "pageindex_doc_ids.json"
-    mapping_path.write_text(json.dumps(doc_mapping, ensure_ascii=False, indent=2))
+    mapping_path.write_text(
+        json.dumps(doc_mapping, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     print(f"\nĐã lưu danh sách doc_id vào {mapping_path.name}")
 
 
@@ -99,7 +151,7 @@ def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
         print("⚠ Không tìm thấy pageindex_doc_ids.json. Vui lòng chạy upload_documents() trước.")
         return []
         
-    doc_mapping = json.loads(mapping_path.read_text())
+    doc_mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
     doc_ids = list(doc_mapping.values())
     if not doc_ids:
         return []
