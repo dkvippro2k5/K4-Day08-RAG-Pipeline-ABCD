@@ -43,135 +43,28 @@ pháp luật áp dụng
 
 1.3. Lý do Trả hàng/Hoàn tiền
 Bạn có thể yêu cầu Trả hàng/Hoàn tiền trong các trường hợp sau:
-| Lý do  |     |     | Trường hợp áp dụng |     |     |     | Điều kiện áp dụng  |
-| ------ | --- | --- | ------------------ | --- | --- | --- | ------------------ |
-Chưa nhận được gói hàng nhưng
-đã cập nhật giao hàng thành công
-| Chưa  nhận  | được |                                |     |     |     |                 |     |
-| ----------- | ---- | ------------------------------ | --- | --- | --- | --------------- | --- |
-|             |      | trên ứng dụng hoặc đơn hàng đã |     |     |     | Tất cả sản phẩm |     |
-hàng
-|     |     | quá  | thời  hạn  | giao  | hàng  | dự  kiến |     |
-| --- | --- | ---- | ---------- | ----- | ----- | -------- | --- |
-(dành cho đơn thanh toán trả trước)
-|     |     | Đã  | nhận  được  | gói  | hàng  | nhưng |     |
-| --- | --- | --- | ----------- | ---- | ----- | ----- | --- |
-thiếu một/vài sản phẩm đã đặt, thiếu
-| Thiếu hàng |     |     |     |     |     | Tất cả sản phẩm |     |
-| ---------- | --- | --- | --- | --- | --- | --------------- | --- |
-bộ phận của sản phẩm hoặc phụ
-kiện, thiếu quà tặng kèm
-| Người bán gửi sai |     | Sản phẩm nhận được không phải |     |     |     |     |     |
-| ----------------- | --- | ----------------------------- | --- | --- | --- | --- | --- |
-Tất cả sản phẩm
-| hàng               |     | sản phẩm đã đặt                  |     |     |     |     |     |
-| ------------------ | --- | -------------------------------- | --- | --- | --- | --- | --- |
-| Hàng bể vỡ - bể/vỡ |     | Sản phẩm bị bể vỡ nặng không còn |     |     |     |     |     |
-Tất cả sản phẩm
-| vụn       |     | giá trị sử dụng |       |           |          |      |     |
-| --------- | --- | --------------- | ----- | --------- | -------- | ---- | --- |
-| Hàng  bể  | vỡ  | - Sản           | phẩm  | còn  giá  | trị  sử  | dụng |     |
-Tất cả sản phẩm
-| trầy/xước/nứt |     | nhưng ngoại quan bị trầy xước |     |     |     |     |     |
-| ------------- | --- | ----------------------------- | --- | --- | --- | --- | --- |
-
-Sản phẩm có chứa chất lỏng và đã
-| Hàng bể vỡ - rò rỉ |     |     |     |     |     | Shopee Policies |     |
-| ------------------ | --- | --- | --- | --- | --- | --------------- | --- |
-Trung tâm trợ giúp Shopee VN bị rò rỉ do bể vỡ bao bì sản phẩm Tất cả sản phẩm
-chất lỏng
-trong quá trình vận chuyển
-| Hàng bể vỡ - thùng |       | Bao bì của nhà sản xuất bị hư hại, |     |     |                 |     |     |
-| ------------------ | ----- | ---------------------------------- | --- | --- | --------------- | --- | --- |
-| hàng               | không | ảnh hưởng đến chất lượng/giá trị   |     |     | Tất cả sản phẩm |     |     |
-| nguyên vẹn         |       | sản phẩm                           |     |     |                 |     |     |
-Các loại bể vỡ khác với 4 loại bể vỡ
-đã liệt kê bên trên (bạn có thể chú
-| Hàng bể vỡ - khác |     |     |     |     | Tất cả sản phẩm |     |     |
-| ----------------- | --- | --- | --- | --- | --------------- | --- | --- |
-thích cụ thể thêm khi yêu cầu trả
-hàng)
-Sản phẩm không thực hiện được
-| Hàng  lỗi,  | không |                               |     |     |                 |     |     |
-| ----------- | ----- | ----------------------------- | --- | --- | --------------- | --- | --- |
-|             |       | chức năng như mô tả của Người |     |     | Tất cả sản phẩm |     |     |
-hoạt động
-bán
-Sản phẩm có sự khác biệt rõ ràng
-|                |     | về  chất  | liệu,  màu  sắc,  | thông  số, |                 |     |     |
-| -------------- | --- | --------- | ----------------- | ---------- | --------------- | --- | --- |
-| Khác với mô tả |     |           |                   |            | Tất cả sản phẩm |     |     |
-kiểu dáng so với mô tả của người
-bán
-|     |     |     |     |     | Ngoại  trừ  | các  sản  phẩm  | đã  |
-| --- | --- | --- | --- | --- | ----------- | --------------- | --- |
-được Người Bán công bố tình
-|           |         | Sản phẩm có dấu hiệu đã qua sử    |     |     | trạng đã qua sử dụng, và tuân |     |     |
-| --------- | ------- | --------------------------------- | --- | --- | ----------------------------- | --- | --- |
-| Hàng  đã  | qua  sử |                                   |     |     |                               |     |     |
-|           |         | dụng (bị bẩn, đã bị cạy mở, không |     |     | thủ các quy định về đăng bán  |     |     |
-dụng
-|     |     | còn đủ dung tích,...) |     |     | tại đây và các chính sách của |     |     |
-| --- | --- | --------------------- | --- | --- | ----------------------------- | --- | --- |
-Shopee vào từng thời điểm cụ
-thể
-Sản phẩm có dấu hiệu làm giả/nhái
-| Hàng giả/nhái |     | sản phẩm thương hiệu nổi tiếng/đã |     |     | Tất cả sản phẩm |     |     |
-| ------------- | --- | --------------------------------- | --- | --- | --------------- | --- | --- |
-được bảo hộ
-| Đổi  ý  (Sản      | phẩm | Chỉ áp dụng khi sản phẩm trả còn |                   |           | • Từ ngày 24/11/2025, áp dụng |     |     |
-| ----------------- | ---- | -------------------------------- | ----------------- | --------- | ----------------------------- | --- | --- |
-| còn  nguyên       | tem, | nguyên                           | trạng  ban  đầu:  | chưa  bóc | cho nhóm người mua hạng Kim   |     |     |
-| nhãn mác, bao bì) |      | tem/khui                         | hộp/sử  dụng/lắp  | đặt/tác   | Cương, Vàng và người dùng     |     |     |
-|                   |      | động,  còn                       | nguyên  vẹn       | tem/nhãn  |                               |     |     |
-
-|     | mác/phụ  kiện/quà  | tặng  đính  | kèm đăng ký thành công gói Shopee |     |                 |
-| --- | ------------------ | ----------- | --------------------------------- | --- | --------------- |
-|     | (nếu có).          |             | VIP.                              |     | Shopee Policies |
-Trung tâm trợ giúp Shopee VN
-
-• Ngoại trừ một số loại sản
-phẩm, bao gồm:
-+ Sản phẩm thuộc danh sách
-hạn chế trả hàng
-+ Các sản phẩm mua tại
-Shopee Mart
-+ Một số sản phẩm riêng biệt
-được ghi nhận rõ ràng và theo
-quyết định của Shopee tại từng
-thời điểm cụ thể tại đây
+| Lý do | Trường hợp áp dụng | Điều kiện áp dụng |
+|---|---|---|
+| Chưa nhận được hàng | Chưa nhận được gói hàng nhưng đã cập nhật giao hàng thành công trên ứng dụng hoặc đơn hàng đã quá thời hạn giao hàng dự kiến (dành cho đơn thanh toán trả trước) | Tất cả sản phẩm |
+| Thiếu hàng | Đã nhận được gói hàng nhưng thiếu một/vài sản phẩm đã đặt, thiếu bộ phận của sản phẩm hoặc phụ kiện, thiếu quà tặng kèm | Tất cả sản phẩm |
+| Người bán gửi sai hàng | Sản phẩm nhận được không phải sản phẩm đã đặt | Tất cả sản phẩm |
+| Hàng bể vỡ - bể/vỡ vụn | Sản phẩm bị bể vỡ nặng không còn giá trị sử dụng | Tất cả sản phẩm |
+| Hàng bể vỡ - trầy/xước/nứt | Sản phẩm còn giá trị sử dụng nhưng ngoại quan bị trầy xước | Tất cả sản phẩm |
+| Hàng bể vỡ - rò rỉ chất lỏng | Sản phẩm có chứa chất lỏng và đã bị rò rỉ do bể vỡ bao bì sản phẩm trong quá trình vận chuyển | Tất cả sản phẩm |
+| Hàng bể vỡ - thùng hàng không nguyên vẹn | Bao bì của nhà sản xuất bị hư hại, ảnh hưởng đến chất lượng/giá trị sản phẩm | Tất cả sản phẩm |
+| Hàng bể vỡ - khác | Các loại bể vỡ khác với 4 loại bể vỡ đã liệt kê bên trên (bạn có thể chú thích cụ thể thêm khi yêu cầu trả hàng) | Tất cả sản phẩm |
+| Hàng lỗi, không hoạt động | Sản phẩm không thực hiện được chức năng như mô tả của Người bán | Tất cả sản phẩm |
+| Khác với mô tả | Sản phẩm có sự khác biệt rõ ràng về chất liệu, màu sắc, thông số, kiểu dáng so với mô tả của người bán | Tất cả sản phẩm |
+| Hàng đã qua sử dụng | Sản phẩm có dấu hiệu đã qua sử dụng (bị bẩn, đã bị cạy mở, không còn đủ dung tích,...) | Ngoại trừ các sản phẩm đã được Người Bán công bố tình trạng đã qua sử dụng, và tuân thủ các quy định về đăng bán tại đây và các chính sách của Shopee vào từng thời điểm cụ thể |
+| Hàng giả/nhái | Sản phẩm có dấu hiệu làm giả/nhái sản phẩm thương hiệu nổi tiếng/đã được bảo hộ | Tất cả sản phẩm |
+| Đổi ý (Sản phẩm còn nguyên tem, nhãn mác, bao bì) | Chỉ áp dụng khi sản phẩm trả còn nguyên trạng ban đầu: chưa bóc tem/khui hộp/sử dụng/lắp đặt/tác động, còn nguyên vẹn tem/nhãn mác/phụ kiện/quà tặng đính kèm (nếu có). | • Từ ngày 24/11/2025, áp dụng cho nhóm người mua hạng Kim Cương, Vàng và người dùng đăng ký thành công gói Shopee VIP.<br>• Ngoại trừ một số loại sản phẩm, bao gồm:<br>+ Sản phẩm thuộc danh sách hạn chế trả hàng<br>+ Các sản phẩm mua tại Shopee Mart<br>+ Một số sản phẩm riêng biệt được ghi nhận rõ ràng và theo quyết định của Shopee tại từng thời điểm cụ thể tại đây |
 2. Quy định chung về việc hoàn lại Mã giảm giá/Shopee Xu khi yêu cầu Trả hàng/Hoàn tiền
-| Trường hợp | Loại khiếu nại |     | Mã giảm giá          |                     | Shopee Xu |
-| ---------- | -------------- | --- | -------------------- | ------------------- | --------- |
-|            |                |     | ·                    | ·                   |           |
-|            |                |     | Hoàn mã nếu lý do là | Hoàn lại Xu theo số |           |
-|            |                |     | Chưa nhận được       | sản phẩm được hoàn. |           |
-|            |                |     | hàng hoặc Hàng rỗng. |                     |           |
-Khiếu nại trên toàn bộ
-|     |     |     |     | ·   |     |
-| --- | --- | --- | --- | --- | --- |
-sản phẩm
-| Hoàn tiền ngay       |                     |     | ·                    | Hoàn tất cả sản        |     |
-| -------------------- | ------------------- | --- | -------------------- | ---------------------- | --- |
-| (không cần trả hàng) |                     |     | Không hoàn mã với lý | phẩm: Hoàn toàn bộ     |     |
-|                      |                     |     | do khác.             | Xu.                    |     |
-|                      |                     |     |                      |                        |     |
-|                      | Khiếu nại trên một/ |     |                      | Hoàn Xu theo tỷ lệ giá |     |
-Không hoàn mã
-|                      | một vài sản phẩm       |     |                     | trị sản phẩm.       |     |
-| -------------------- | ---------------------- | --- | ------------------- | ------------------- | --- |
-| Trả hàng & Hoàn tiền | Khiếu nại trên toàn bộ |     | Mã giảm giá sẽ được | ·                   |     |
-|                      | sản phẩm               |     | hoàn.               | Hoàn lại Xu theo số |     |
-sản phẩm được hoàn.
-
-·
-
-Hoàn tất cả sản
-phẩm: HSohàonp teoeà Pno bliộcies
-Trung tâm trợ giúp Shopee VN
-Xu.
-Khiếu nại trên một/ Mã giảm giá sẽ không Hoàn Xu theo tỷ lệ giá
-một vài sản phẩm được hoàn trị sản phẩm.
+| Trường hợp | Loại khiếu nại | Mã giảm giá | Shopee Xu |
+|---|---|---|---|
+| Hoàn tiền ngay (không cần trả hàng) | Khiếu nại trên toàn bộ sản phẩm | • Hoàn mã nếu lý do là Chưa nhận được hàng hoặc Hàng rỗng.<br>• Không hoàn mã với lý do khác. | • Hoàn lại Xu theo số sản phẩm được hoàn.<br>• Hoàn tất cả sản phẩm: Hoàn toàn bộ Xu. |
+| | Khiếu nại trên một/ một vài sản phẩm | Không hoàn mã | Hoàn Xu theo tỷ lệ giá trị sản phẩm. |
+| Trả hàng & Hoàn tiền | Khiếu nại trên toàn bộ sản phẩm | Mã giảm giá sẽ được hoàn. | • Hoàn lại Xu theo số sản phẩm được hoàn.<br>• Hoàn tất cả sản phẩm: Hoàn toàn bộ Xu. |
+| | Khiếu nại trên một/ một vài sản phẩm | Mã giảm giá sẽ không được hoàn | Hoàn Xu theo tỷ lệ giá trị sản phẩm. |
 ⚠ Lưu ý:
 Voucher Shopee Live, Video Voucher, Voucher Người dùng mới Shopee, Voucher Người
 dùng mới Shopee Pay, Voucher Người dùng mới SPayLater sẽ không được hoàn lại trong bất

@@ -9,53 +9,38 @@ Khuyến Mãi & Ưu Đãi
 * Chỉ áp dụng cho ngành hàng được bán bởi các nhà phân phối sau:
 
 Thanh Toán
-|                       | tefal_vn_official      | sandisk_flagship_mmz_store |
-| --------------------- | ---------------------- | -------------------------- |
-| Đơn Hàng & Vận Chuyển | SAMSUNG OFFICIAL STORE | memoryzonevn               |
-|                       | philips_homeappliances | lexar_mmz_vn               |
-Trả Hàng & Hoàn Tiền
-|     | lg_official_store | keychron_mmz_vn |
-| --- | ----------------- | --------------- |
-Thông Tin Chung
-|     | ezviz_authorized_store | hyperx_vn |
-| --- | ---------------------- | --------- |
-Chính sách Shopee
-|     | elmich_flagship_store | Viettel Store |
-| --- | --------------------- | ------------- |
-Tài khoản Shopee
-|     | apple_flagship_store | microsoft_authorized_store |
-| --- | -------------------- | -------------------------- |
-Mua sắm an toàn
-|     | Elmich Việt Nam Chính Hãng | aolonstore.vn |
-| --- | -------------------------- | ------------- |
-Thư viện thông tin
-| Ứng dụng Shopee | Kangaroo_Official_Store | jamay_vn |
-| --------------- | ----------------------- | -------- |
-
-Khác
-Coocaa Official Store jamay_vietnam
-Shopee Policies
-Hướng dẫn chung Trung tâm trợ giúp Shopee VN
-Electrolux Official Store gearvnofficialstore
-sharp_official_store sandiskstore
-BlueStone | Official Store lazychef_official
-TCL Flagship Store shopdunk_official_store
-SmartChoice Official Store FPTShop
-ATH_Lighting_official hachihi
-Comet Official Store hangchinhhieu
-SUNHOUSE GROUP JSC siid_2pax8
-TENDA OFFICIAL STORE energizermobilepower
-vnhobbyshop _njyhb327n
-Hitachivietnam.store corsair_hangchinhhieu_store
-ucssinc. asus_hangchinhhieu_store
-panasonic braun.store
-tigervn_officialstore hp_hangchinhhieu_store
-baseus official geforce_store_vn
-Ankermall.vn logitech_officialshop
-soundcoreflagshipstore asus_gear_official_store
-Viettel AAR lexar_oficialstore
-power anchor wd_officialshop
-lazychef_vietnam
+| Nhóm Cửa hàng 1 | Nhóm Cửa hàng 2 |
+|---|---|
+| tefal_vn_official | sandisk_flagship_mmz_store |
+| SAMSUNG OFFICIAL STORE | memoryzonevn |
+| philips_homeappliances | lexar_mmz_vn |
+| lg_official_store | keychron_mmz_vn |
+| ezviz_authorized_store | hyperx_vn |
+| elmich_flagship_store | Viettel Store |
+| apple_flagship_store | microsoft_authorized_store |
+| Elmich Việt Nam Chính Hãng | aolonstore.vn |
+| Kangaroo_Official_Store | jamay_vn |
+| Coocaa Official Store | jamay_vietnam |
+| Electrolux Official Store | gearvnofficialstore |
+| sharp_official_store | sandiskstore |
+| BlueStone | Official Store | lazychef_official |
+| TCL Flagship Store | shopdunk_official_store |
+| SmartChoice Official Store | FPTShop |
+| ATH_Lighting_official | hachihi |
+| Comet Official Store | hangchinhhieu |
+| SUNHOUSE GROUP JSC | siid_2pax8 |
+| TENDA OFFICIAL STORE | energizermobilepower |
+| vnhobbyshop | _njyhb327n |
+| Hitachivietnam.store | corsair_hangchinhhieu_store |
+| ucssinc. | asus_hangchinhhieu_store |
+| panasonic | braun.store |
+| tigervn_officialstore | hp_hangchinhhieu_store |
+| baseus official | geforce_store_vn |
+| Ankermall.vn | logitech_officialshop |
+| soundcoreflagshipstore | asus_gear_official_store |
+| Viettel AAR | lexar_oficialstore |
+| power anchor | wd_officialshop |
+| lazychef_vietnam | |
 
 Shopee Policies
 Trung tâm trợ giúp Shopee VN
