@@ -1,5 +1,47 @@
 # Bài Tập Nhóm — E-commerce Support RAG Chatbot
 
+---
+
+## Phân Công Công Việc
+
+| Thành viên | MSSV | Nhiệm vụ | Trạng thái |
+|-----------|------|----------|------------|
+| **Dương Văn Kiên*** (Leader) | 2A202601724 | Role 1: Điều phối tiến độ, ghép `supervisor.py`, Task 9 (retrieval pipeline + fallback) | Hoàn thành 100% |
+| **Hoàng Thị Hà Huyền** | 2A202601909 | Role 2: Task 1, 3, 4, 5 (thu thập tài liệu, convert markdown, chunking/indexing, semantic search) | Hoàn thành 100% |
+| **Lương Hoàng Minh** | 2A202601490 | Role 3: Task 6, 7, 8 (BM25, RRF reranking, PageIndex fallback) | Hoàn thành 100% |
+| **Nguyễn Đình Hoàng** | 2A202601436 | Role 4: Task 2, 10, `app.py` (crawl, generation citation, giao diện Streamlit) | Hoàn thành 100% |
+| **Trần Tiến Dũng** | 2A202601064 | Role 5: Đánh giá RAGAS, `golden_dataset.json`, `eval_pipeline.py`, `results.md` | Hoàn thành 100% |
+
+---
+
+## Kiến Trúc Hệ Thống
+
+```mermaid
+graph TD
+    User([User Query]) --> ChatUI(Streamlit Chat UI)
+    ChatUI --> RAG_Pipeline
+    
+    subgraph RAG_Pipeline [Retrieval-Augmented Generation Pipeline]
+        Q_Proc(Query Processing) --> Dense(Semantic Search <br> BAAI/bge-m3)
+        Q_Proc --> Sparse(Lexical Search <br> BM25)
+        
+        Dense --> RRF(RRF Reranking)
+        Sparse --> RRF
+        
+        RRF --> CheckScore{Top-1 Score <br> < 0.48?}
+        
+        CheckScore -- Yes --> PageIndex(PageIndex Fallback <br> Vectorless)
+        CheckScore -- No --> Reorder(Document Reordering <br> Lost-in-the-Middle)
+        
+        PageIndex --> LLM
+        Reorder --> LLM(LLM Generation <br> OpenRouter)
+    end
+    
+    LLM --> Response([Response with Citations])
+```
+
+---
+
 ## Mục Tiêu
 
 Sau khi hoàn thành bài cá nhân, nhóm ngồi lại để xây dựng **1 trong 2 sản phẩm**:
@@ -64,25 +106,6 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 3. **Evaluation pipeline** chạy được và có báo cáo kết quả
 4. **Code push lên repository** chung của nhóm
 5. **README** mô tả kiến trúc và phân công (điền bên dưới)
-
----
-
-## Kiến Trúc Hệ Thống
-
-```
-[Vẽ diagram kiến trúc ở đây]
-```
-
----
-
-## Phân Công Công Việc
-
-| Thành viên | MSSV | Nhiệm vụ | Trạng thái |
-|-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
 
 ---
 
