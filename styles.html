@@ -1,0 +1,212 @@
+<style>
+  :root{
+    --bg:#F5F6FA;
+    --surface:#FFFFFF;
+    --surface-alt:#EEF0F8;
+    --ink:#1E1B2E;
+    --ink-soft:#63607A;
+    --ink-faint:#9A97B0;
+    --brand:#4338CA;
+    --brand-hover:#372DB0;
+    --brand-soft:#EEF0FF;
+    --accent:#F59E0B;
+    --accent-soft:#FFF4DE;
+    --success:#16A34A;
+    --success-soft:#E9F9EF;
+    --border:#E3E4EE;
+    --mono-bg:#17152E;
+    --mono-text:#C9C4F5;
+    --mono-key:#8B84E8;
+    --mono-str:#F5B971;
+    --radius-lg:18px;
+    --radius-md:12px;
+    --radius-sm:8px;
+    --shadow: 0 1px 2px rgba(30,27,46,0.04), 0 8px 24px -12px rgba(30,27,46,0.12);
+  }
+
+  /* Custom App Overrides for Streamlit */
+  .stApp {
+    background-color: var(--bg);
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+  }
+
+  /* Messages */
+  .msg-user {
+    align-self: flex-end;
+    max-width: 78%;
+    background: var(--brand);
+    color: #fff;
+    padding: 11px 16px;
+    border-radius: 16px 16px 4px 16px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  .msg-bot {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px 16px 16px 16px;
+    padding: 18px 20px 16px;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .bot-text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .bot-text p { margin: 0 0 10px; }
+  .bot-text p:last-child { margin-bottom: 0; }
+  .bot-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 14px 0 10px;
+    display: flex; align-items: center; gap: 7px;
+  }
+
+  /* Pipeline (Breadcrumbs) */
+  .pipeline {
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 14px; padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .pipeline-step {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 11px; font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-faint);
+  }
+  .pipeline-step.done { color: var(--success); }
+  .pipeline-step .pip-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--border);
+  }
+  .pipeline-step.done .pip-dot { background: var(--success); }
+  .pipeline-line {
+    flex: 1; height: 1px; background: var(--border);
+    min-width: 10px; max-width: 24px;
+  }
+
+  /* Compare Table */
+  .compare-wrap {
+    overflow-x: auto; margin: 12px 0 4px;
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+  }
+  table.compare {
+    width: 100%; border-collapse: collapse; font-size: 13px; min-width: 520px;
+  }
+  table.compare thead th {
+    text-align: left; background: var(--surface-alt);
+    color: var(--ink-soft); font-weight: 600; font-size: 11.5px;
+    text-transform: uppercase; letter-spacing: .03em;
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+  }
+  table.compare tbody td {
+    padding: 11px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.compare tbody tr:last-child td { border-bottom: none; }
+  table.compare tbody tr:hover { background: var(--brand-soft); }
+  .model-name { font-weight: 600; color: var(--ink); }
+  .spec-val { font-weight: 600; color: var(--brand); }
+  .highlight-badge {
+    display: inline-block; margin-top: 4px; font-size: 10.5px; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 2px 7px; border-radius: 999px;
+  }
+
+  /* Meta Row */
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
+  }
+  .meta-chip {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; padding: 6px 11px; border-radius: 999px;
+  }
+  .meta-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .chip-confidence { background: var(--success-soft); color: var(--success); }
+  .chip-source { background: var(--surface-alt); color: var(--ink-soft); cursor: default; }
+  .chip-time { color: var(--ink-faint); font-size: 11.5px; padding: 6px 4px; }
+
+  /* OVERRIDES FOR STREAMLIT BUTTONS via :has() markers */
+
+  /* Trace Toggle Button */
+  div[data-testid="stHorizontalBlock"]:has(#marker-trace-toggle) div[data-testid="stButton"] button {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 12px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border);
+    font-size: 12.5px; font-weight: 500; color: var(--ink-soft);
+    transition: .15s ease;
+  }
+  div[data-testid="stHorizontalBlock"]:has(#marker-trace-toggle) div[data-testid="stButton"] button:hover {
+    border-color: var(--brand); color: var(--brand); background: var(--brand-soft);
+  }
+
+  /* FollowUp Chips */
+  div[data-testid="stHorizontalBlock"]:has(#marker-followup) div[data-testid="stButton"] button {
+    font-size: 12.5px; font-weight: 500; color: var(--brand);
+    background: var(--brand-soft); border: 1px solid transparent;
+    padding: 7px 13px; border-radius: 999px;
+    transition: .15s ease;
+    min-height: 0; line-height: 1.2;
+  }
+  div[data-testid="stHorizontalBlock"]:has(#marker-followup) div[data-testid="stButton"] button:hover {
+    background: var(--surface); border-color: var(--brand);
+  }
+
+  /* Feedback Buttons */
+  div[data-testid="stHorizontalBlock"]:has(#marker-feedback) div[data-testid="stButton"] button {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid transparent; background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-faint); transition: .15s ease;
+    padding: 0;
+  }
+  div[data-testid="stHorizontalBlock"]:has(#marker-feedback) div[data-testid="stButton"] button:hover {
+    background: var(--surface-alt); color: var(--ink-soft);
+  }
+  /* For active states, we can render a different marker or use Streamlit's primary button style */
+  div[data-testid="stHorizontalBlock"]:has(#marker-feedback-up) div[data-testid="stButton"] button {
+    color: var(--success); background: var(--success-soft);
+  }
+  div[data-testid="stHorizontalBlock"]:has(#marker-feedback-down) div[data-testid="stButton"] button {
+    color: #DC2626; background: #FDECEC;
+  }
+
+  /* Drawer Overlay */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(23,21,46,0.35);
+    z-index: 999990;
+  }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100%; width: 380px; max-width: 92vw;
+    background: var(--surface); box-shadow: -16px 0 40px -20px rgba(23,21,46,0.4);
+    z-index: 999991; display: flex; flex-direction: column; padding: 22px 20px; overflow-y: auto;
+  }
+  .drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .drawer-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; }
+  .drawer-sub { font-size: 12px; color: var(--ink-faint); margin-bottom: 20px; }
+  
+  .step-card { border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+  .step-head { display: flex; align-items: center; gap: 9px; padding: 12px 14px; background: var(--surface-alt); }
+  .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--success); color: #fff; font-size: 10.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-title { font-size: 12.5px; font-weight: 600; }
+  .step-time { margin-left: auto; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: var(--ink-faint); }
+  .step-body { padding: 12px 14px; font-size: 12px; color: var(--ink-soft); }
+  .step-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); font-family: 'JetBrains Mono', monospace; }
+  
+  /* Close Button Override */
+  div[data-testid="stHorizontalBlock"]:has(#marker-drawer-close) div[data-testid="stButton"] button {
+    width: 28px; height: 28px; border-radius: 8px; border: none;
+    background: var(--surface-alt); color: var(--ink-soft);
+    position: fixed; right: 20px; top: 22px; z-index: 999992;
+    padding: 0; display: flex; align-items: center; justify-content: center;
+  }
+</style>

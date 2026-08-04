@@ -158,20 +158,31 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
 
     # Step 5: Call LLM (OpenRouter — OpenAI-compatible API)
     from openai import OpenAI
+    
     api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
+    
+    if not api_key:
+        return {
+            "answer": "Lỗi: Chưa cấu hình OPENROUTER_API_KEY hoặc OPENAI_API_KEY trong file .env",
+            "sources": chunks,
+            "retrieval_source": chunks[0].get("source", "hybrid") if chunks else "none",
+        }
+        
     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
 
-    response = client.chat.completions.create(
-        model=LLM_MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_message},
-        ],
-        temperature=TEMPERATURE,
-        top_p=TOP_P,
-    )
-
-    answer = response.choices[0].message.content
+    try:
+        response = client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_message},
+            ],
+            temperature=TEMPERATURE,
+            top_p=TOP_P,
+        )
+        answer = response.choices[0].message.content
+    except Exception as e:
+        answer = f"Lỗi khi gọi LLM API: {e}"
 
     # Step 6: Return
     return {
