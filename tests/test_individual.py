@@ -265,7 +265,7 @@ class TestTask5(unittest.TestCase):
         """Mỗi result có 'content', 'score', 'metadata'."""
         search = self._import_task5()
         try:
-            results = search("return refund policy", top_k=3)
+            results = search("chính sách trả hàng hoàn tiền", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả (có thể chưa index)")
             for r in results:
@@ -278,7 +278,7 @@ class TestTask5(unittest.TestCase):
         """Kết quả sorted theo score descending."""
         search = self._import_task5()
         try:
-            results = search("ecommerce return policy", top_k=5)
+            results = search("quy định trả hàng", top_k=5)
             if len(results) < 2:
                 self.skipTest("Không đủ kết quả để test sort")
             scores = [r["score"] for r in results]
@@ -314,7 +314,7 @@ class TestTask6(unittest.TestCase):
         """lexical_search() trả về list."""
         search = self._import_task6()
         try:
-            results = search("return refund evidence policy", top_k=3)
+            results = search("bằng chứng trả hàng hoàn tiền", top_k=3)
             self.assertIsInstance(results, list)
         except NotImplementedError:
             self.skipTest("lexical_search chưa implement")
@@ -323,7 +323,7 @@ class TestTask6(unittest.TestCase):
         """Mỗi result có 'content', 'score'."""
         search = self._import_task6()
         try:
-            results = search("seller listing regulations", top_k=3)
+            results = search("quy định đăng bán", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả")
             for r in results:
@@ -336,7 +336,7 @@ class TestTask6(unittest.TestCase):
         """Kết quả sorted theo BM25 score descending."""
         search = self._import_task6()
         try:
-            results = search("order tracking guide", top_k=5)
+            results = search("theo dõi đơn hàng", top_k=5)
             if len(results) < 2:
                 self.skipTest("Không đủ kết quả")
             scores = [r["score"] for r in results]
@@ -348,7 +348,7 @@ class TestTask6(unittest.TestCase):
         """Query có keyword match phải có score > 0."""
         search = self._import_task6()
         try:
-            results = search("payment methods", top_k=3)
+            results = search("phương thức thanh toán", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả")
             # Ít nhất 1 result phải có score > 0
@@ -437,7 +437,7 @@ class TestTask8(unittest.TestCase):
         """Kết quả có 'source': 'pageindex'."""
         search = self._import_task8()
         try:
-            results = search("payment methods", top_k=2)
+            results = search("phương thức thanh toán", top_k=2)
             self.assertIsInstance(results, list)
             if results:
                 self.assertEqual(results[0].get("source"), "pageindex")
@@ -463,7 +463,7 @@ class TestTask9(unittest.TestCase):
         """retrieve() trả về list of dicts."""
         retrieve_fn = self._import_task9()
         try:
-            results = retrieve_fn("return refund policy", top_k=3)
+            results = retrieve_fn("chính sách trả hàng hoàn tiền", top_k=3)
             self.assertIsInstance(results, list)
         except NotImplementedError:
             self.skipTest("retrieve chưa implement")
@@ -472,7 +472,7 @@ class TestTask9(unittest.TestCase):
         """Kết quả có 'content', 'score', 'source'."""
         retrieve_fn = self._import_task9()
         try:
-            results = retrieve_fn("ecommerce return policy", top_k=3)
+            results = retrieve_fn("quy định trả hàng", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả")
             for r in results:
@@ -552,7 +552,7 @@ class TestTask10(unittest.TestCase):
         """generate_with_citation() trả về dict có 'answer'."""
         generate, _, _ = self._import_task10()
         try:
-            result = generate("What payment methods does Shopee support?")
+            result = generate("Shopee hỗ trợ những phương thức thanh toán nào?")
             self.assertIsInstance(result, dict)
             self.assertIn("answer", result)
             self.assertIsInstance(result["answer"], str)
