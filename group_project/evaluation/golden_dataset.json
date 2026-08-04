@@ -1,17 +1,87 @@
 [
   {
     "question": "Người mua có thể yêu cầu trả hàng/hoàn tiền trong thời hạn bao lâu sau khi nhận hàng?",
-    "expected_answer": "Trong vòng 15 ngày kể từ khi giao hàng thành công (24 giờ đối với thực phẩm tươi sống/đông lạnh).",
-    "expected_context": "Trang Returns and Refunds Policy, mục Return/Refund Eligibility"
+    "expected_answer": "Trong vòng 15 ngày kể từ khi đơn hàng được cập nhật trạng thái 'Giao hàng thành công' (24 giờ đối với đơn hàng giao thực phẩm tươi sống/đông lạnh, trừ lý do chưa nhận được hàng).",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 1.2"
   },
   {
-    "question": "Shopee hỗ trợ những phương thức thanh toán nào?",
-    "expected_answer": "ShopeePay Wallet, thẻ tín dụng/ghi nợ, trả góp qua thẻ, QR Code, chuyển khoản qua app ngân hàng, thẻ NAPAS, Apple Pay, Google Pay, và COD.",
-    "expected_context": "Trang Payment Methods Overview"
+    "question": "Đối với đơn hàng do Người bán tự vận chuyển, thời hạn gửi yêu cầu trả hàng/hoàn tiền là bao lâu?",
+    "expected_answer": "15 ngày kể từ lúc bạn bấm 'Đã nhận được hàng', hoặc 20 ngày kể từ lúc đơn hàng được cập nhật trạng thái 'Lấy hàng thành công' nếu bạn không bấm 'Đã nhận được hàng'.",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 1.2"
   },
   {
-    "question": "Người bán không được đăng bán những sản phẩm nào?",
-    "expected_answer": "Hàng giả/nhái, sản phẩm bất hợp pháp, vi phạm sở hữu trí tuệ, và các mặt hàng nằm trong danh sách cấm của sàn.",
-    "expected_context": "Trang Product Listing Regulations, mục Prohibited Content"
+    "question": "Shopee phản hồi yêu cầu Trả hàng/Hoàn tiền của Người mua trong bao lâu?",
+    "expected_answer": "Trong vòng 3-5 ngày làm việc (không tính thứ Bảy, Chủ Nhật và các ngày nghỉ lễ/Tết theo quy định pháp luật).",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 1.2"
+  },
+  {
+    "question": "Mã giảm giá (voucher) có luôn được hoàn lại khi yêu cầu Trả hàng/Hoàn tiền được chấp nhận không?",
+    "expected_answer": "Không. Voucher Shopee Live, Video Voucher, các voucher người dùng mới, Shop Voucher (do Người bán phát hành) và mã miễn phí vận chuyển sẽ không được hoàn lại trong bất kỳ trường hợp nào. Các mã giảm giá khác được hoàn trong vòng 48 giờ (không kể Thứ 7, Chủ Nhật, ngày lễ) sau khi yêu cầu Trả hàng/Hoàn tiền được chấp nhận.",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 2"
+  },
+  {
+    "question": "Tôi có thể yêu cầu trả hàng vì lý do 'đổi ý' không?",
+    "expected_answer": "Có, nhưng chỉ áp dụng khi sản phẩm còn nguyên tem/nhãn mác/bao bì, chưa bóc tem/khui hộp/sử dụng/lắp đặt/tác động; từ 24/11/2025 chỉ áp dụng cho nhóm người mua hạng Kim Cương, Vàng và người dùng đã đăng ký gói Shopee VIP, ngoại trừ sản phẩm thuộc danh sách hạn chế trả hàng hoặc mua tại Shopee Mart.",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 1.3"
+  },
+  {
+    "question": "Shopee Xu được hoàn lại khi nào sau khi yêu cầu Trả hàng/Hoàn tiền được chấp nhận?",
+    "expected_answer": "Shopee Xu được hoàn lại ngay sau khi khiếu nại hoàn tất và Người mua được chấp nhận yêu cầu hoàn tiền.",
+    "expected_context": "[Trả hàng_Hoàn tiền] Những quy định chung về Trả hàng_Hoàn tiền của Shopee.pdf, mục 2"
+  },
+  {
+    "question": "Sản phẩm cần đáp ứng những điều kiện gì để được bảo hành miễn phí trên Shopee?",
+    "expected_answer": "Sản phẩm bị lỗi kỹ thuật do nhà sản xuất, còn trong thời hạn bảo hành, có hóa đơn điện tử (khi được yêu cầu) hoặc mã đơn hàng, và với hàng điện gia dụng thì phiếu/tem bảo hành (và tem niêm phong) của nhà sản xuất còn nguyên vẹn.",
+    "expected_context": "[Quy định] Chính sách bảo hành cho sản phẩm mua tại Shopee.pdf, mục 1 - Điều kiện bảo hành"
+  },
+  {
+    "question": "Thời gian bảo hành sản phẩm thông qua Shopee mất khoảng bao lâu?",
+    "expected_answer": "Dự kiến từ 20 đến 45 ngày làm việc tính từ lúc Shopee nhận được sản phẩm, tùy thuộc vào linh kiện cần thay thế của hãng.",
+    "expected_context": "[Quy định] Chính sách bảo hành cho sản phẩm mua tại Shopee.pdf, mục 4b - Bảo hành thông qua Shopee"
+  },
+  {
+    "question": "Video đăng trên Shopee Video có được phép chứa watermark của nền tảng khác không?",
+    "expected_answer": "Không. Video không được chứa logo/watermark, đặc biệt là logo/watermark của bên thứ ba hoặc các nền tảng khác ngoài Shopee.",
+    "expected_context": "[Shopee Video] Quy định về nội dung video đăng tải trên Shopee Video.pdf, mục Watermark"
+  },
+  {
+    "question": "Hình thức xử phạt khi vi phạm quy định tạo giao dịch ngoài nền tảng trên Shopee Video là gì?",
+    "expected_answer": "Từ ngày 16/09/2024: vi phạm lần 1 sẽ bị xóa video, vi phạm lần 2 sẽ bị khóa tài khoản.",
+    "expected_context": "[Shopee Video] Quy định về nội dung video đăng tải trên Shopee Video.pdf, mục Hình thức xử phạt"
+  },
+  {
+    "question": "Làm sao để kiểm tra trạng thái đơn hàng trên Shopee?",
+    "expected_answer": "Vào Ứng dụng Shopee, mục Tôi > Đơn mua để xem trạng thái đơn hàng, gồm: Chờ xác nhận, Chờ lấy hàng, Đang giao, Đánh giá, Đã giao, Đã hủy, Trả hàng.",
+    "expected_context": "article_01.json - [Thông tin đơn hàng] Hướng dẫn kiểm tra trạng thái đơn hàng trên Shopee"
+  },
+  {
+    "question": "Điều kiện để đổi phương thức thanh toán cho một đơn hàng đã đặt trên Shopee là gì?",
+    "expected_answer": "Đơn hàng phải trả trước bằng thẻ tín dụng/ghi nợ/thẻ ATM nội địa/Ví ShopeePay/Thanh toán QR/Ứng dụng ngân hàng/Apple Pay/Google Pay, chưa hoàn tất thanh toán 100% (đơn hàng đang ở mục Chờ xác nhận), và sản phẩm trong đơn hàng không thuộc mục Nạp thẻ & Dịch vụ.",
+    "expected_context": "article_02.json - [Thành viên mới] Tôi có thể thay đổi phương thức thanh toán cho đơn hàng không?"
+  },
+  {
+    "question": "Nếu thanh toán bằng thẻ tín dụng/ghi nợ, sau khi Shopee chấp nhận hoàn tiền thì bao lâu tôi nhận được tiền?",
+    "expected_answer": "7-14 ngày làm việc tùy theo ngân hàng, và tiền được hoàn về đúng tài khoản thẻ tín dụng/ghi nợ đã dùng để thanh toán đơn hàng.",
+    "expected_context": "article_03.json - [Trả hàng/ Hoàn tiền] Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn"
+  },
+  {
+    "question": "Hoàn tiền qua Ví ShopeePay mất bao lâu?",
+    "expected_answer": "24 giờ, với điều kiện Ví ShopeePay vẫn hoạt động bình thường và còn liên kết với tài khoản Shopee.",
+    "expected_context": "article_03.json - [Trả hàng/ Hoàn tiền] Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn"
+  },
+  {
+    "question": "Có những cách nào để gửi yêu cầu Trả hàng/Hoàn tiền trên Shopee?",
+    "expected_answer": "Hai cách: (1) gửi trực tiếp tại trang đơn hàng, vào mục Tôi > Chờ giao hàng/Đã giao > bấm Trả hàng/Hoàn tiền; hoặc (2) gửi qua mục Trò Chuyện Với Shopee > chọn Khiếu nại trả hàng hoàn tiền.",
+    "expected_context": "article_04.json - [Trả hàng/ Hoàn tiền] Hướng dẫn gửi yêu cầu Trả hàng/ Hoàn tiền"
+  },
+  {
+    "question": "Cần chuẩn bị bằng chứng gì khi gửi yêu cầu trả hàng/hoàn tiền vì sản phẩm bị lỗi?",
+    "expected_answer": "Mô tả tình trạng hàng hóa, bằng chứng thể hiện tình trạng sản phẩm (hình ảnh sản phẩm, video mở hộp,...) và email liên hệ.",
+    "expected_context": "article_04.json - [Trả hàng/ Hoàn tiền] Hướng dẫn gửi yêu cầu Trả hàng/ Hoàn tiền"
+  },
+  {
+    "question": "Tôi có thể mua hàng trên Shopee Singapore rồi giao về Việt Nam không?",
+    "expected_answer": "Không. Đơn hàng mua trên Shopee của quốc gia khác chỉ được giao đến địa chỉ nằm trong lãnh thổ quốc gia đó — ví dụ một sản phẩm mua trên Shopee Singapore chỉ được giao đến địa chỉ tại Singapore, không thể giao trực tiếp đến Việt Nam.",
+    "expected_context": "article_05.json - [Thành viên mới] Tôi có thể mua hàng trên Shopee của những quốc gia khác ngoài Việt Nam không?"
   }
 ]
