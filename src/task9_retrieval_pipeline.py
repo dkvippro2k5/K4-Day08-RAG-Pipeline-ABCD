@@ -100,7 +100,9 @@ def retrieve(
     # Step 4: Check threshold DÙNG ĐIỂM COSINE GỐC (dense_results), KHÔNG PHẢI RRF
     best_score = dense_results[0]["score"] if dense_results else 0.0
     if best_score < score_threshold:
-        print(f"  ⚠ Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
+        # Streamlit trên Windows có thể dùng stdout cp1252; dùng log ASCII
+        # để cảnh báo fallback không làm hỏng request RAG.
+        print(f"  [WARN] Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
         fallback = pageindex_search(query, top_k=top_k)
         if fallback:
             return fallback
